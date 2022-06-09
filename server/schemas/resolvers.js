@@ -47,7 +47,29 @@ const resolvers = {
       await user.save();
       return { token, user };
     },
-  },
+    addWatchItems: async (parent, { watchlistData }, ctx) => {
+      if (ctx.user) {
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: ctx.user._id },
+          { $push: { savedItem: watchlistData } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    removeWatchItems: async (parent, { itemId }, ctx) => {
+      if (ctx.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: ctx.user._id },
+          { $pull: { savedItem: { itemId } } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+  },  
 };
 
 module.exports = resolvers;
