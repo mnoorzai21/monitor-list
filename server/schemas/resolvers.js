@@ -36,18 +36,40 @@ const resolvers = {
       const { email, password } = args;
       const user = await User.findOne({ email });
       if (!user) {
-        throw new AuthenticationError("Invalid username or password");
+        throw new AuthenticationError("Invalid email or password");
       }
       const authentic = await user.isCorrectPassword(password);
       if (!authentic) {
-        throw new AuthenticationError("Invalid username or password");
+        throw new AuthenticationError("Invalid email or password");
       }
       const token = await signToken(user);
       user.lastLogin = Date.now();
       await user.save();
       return { token, user };
     },
-  },
+    addWatchItems: async (parent, { watchlistData }, ctx) => {
+      if (ctx.user) {
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: ctx.user._id },
+          { $push: { savedItem: watchlistData } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    removeWatchItems: async (parent, { itemId }, ctx) => {
+      if (ctx.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: ctx.user._id },
+          { $pull: { savedItem: { itemId } } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+  },  
 };
 
 module.exports = resolvers;
