@@ -19,10 +19,6 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  lastLogin: {
-    type: Date,
-    default: Date.now,
-  },
 });
 
 userSchema.pre("save", async function (next) {
