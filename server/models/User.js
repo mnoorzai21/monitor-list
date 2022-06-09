@@ -1,3 +1,4 @@
+const watchItem = require("./WatchItem");
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
@@ -19,6 +20,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  watchList: [watchItem.schema],
 });
 
 userSchema.pre("save", async function (next) {
