@@ -1,4 +1,5 @@
 import { ApolloProvider } from "@apollo/client";
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import RequireAuth from "./components/RequireAuth";
@@ -10,6 +11,18 @@ import { client } from "./util/apolloClient";
 import { AuthProvider } from "./util/auth";
 
 function App() {
+  // useEffect(() => {
+  //   fetch("https://imdb-api.com/en/API/Top250Movies/k_ws4zcg2h")
+  //   .then((res) => {
+  //     if (!res.ok) {
+  //       throw new Error(res.statusText)
+  //     } 
+  //     return res.json()
+    
+  //   }).then((data) => {
+  //     console.log(data)
+  //   }).catch(console.log)
+  // }, []);
   return (
     <ApolloProvider client={client}>
       <Router>
