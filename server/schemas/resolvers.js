@@ -69,7 +69,7 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    updateWatchedItem: async (parent, { itemId }, ctx) => {
+    updateWatchItem: async (parent, { itemId }, ctx) => {
       if (ctx.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: ctx.user._id },
