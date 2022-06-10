@@ -14,7 +14,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addWatchItem(watchlistData: ID!, IMDbId: String!): User
     removeWatchItem(itemId: ID!): User
-    updateWatchedItem(itemId: ID!): User
+    updateWatchItem(itemId: ID!): User
   }
 
   type Auth {
