@@ -21,7 +21,7 @@ const watchItemSchema = new Schema({
     type: Boolean,
     required: true,
   },
-  imdbId: {
+  IMDbId: {
     type: String,
     required: true,
   },
