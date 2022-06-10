@@ -12,7 +12,7 @@ const typeDefs = gql`
   type Mutation {
     createUser(email: String!, password: String!, username: String!): Auth
     login(email: String!, password: String!): Auth
-    addWatchItem(watchlistData: imdbId): User
+    addWatchItem(watchlistData: ID!, IMDbId: String!): User
     removeWatchItem(itemId: ID!): User
     updateWatchedItem(itemId: ID!): User
   }
@@ -35,8 +35,8 @@ const typeDefs = gql`
     title: String!
     summary: String
     Poster: String
-    imdbId: Int
-    mediaType: boolean
+    IMDbId: String
+    mediaType: Boolean
   }
 `;
 
