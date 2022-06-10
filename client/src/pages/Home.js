@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useAuth } from "../util/auth";
 import { top250Movies } from "../util/IMDBapi";
+import { Card, Container } from "react-bootstrap";
 
 export default function Home() {
   const { isLoggedIn, user } = useAuth();
@@ -8,8 +9,6 @@ export default function Home() {
     const getMovies = async () => {
       try {
         const data = await top250Movies();
-        
-      
         console.log(data);
       } catch (error) {
         console.log(error);
