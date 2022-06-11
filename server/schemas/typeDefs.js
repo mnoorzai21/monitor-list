@@ -26,7 +26,6 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
-    lastLogin: Date!
     watchList: [WatchItem]
   }
 
