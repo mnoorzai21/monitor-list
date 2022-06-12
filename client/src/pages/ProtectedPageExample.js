@@ -11,8 +11,7 @@ export default function ProtectedPageExample() {
         <Card.Body>
           <Card.Title>Title</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            WATCHLIST STUFF NEW TEXT
           </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
