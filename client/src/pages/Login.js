@@ -3,9 +3,6 @@ import { useLocation, Navigate } from "react-router-dom";
 import { useAuth } from "../util/auth";
 import { Form, Button } from "react-bootstrap";
 
-// This signup form is intentionally minimalist to reduce effort required to
-// customize it to your app's needs. See the excellent best practices guide for
-// sign informs on web.dev https://web.dev/sign-in-form-best-practices/
 
 // TODO: customize styles or import styles with favorite css approach
 const initialFormState = {

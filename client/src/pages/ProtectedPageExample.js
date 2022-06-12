@@ -11,7 +11,7 @@ export default function ProtectedPageExample() {
         <Card.Body>
           <Card.Title>Title</Card.Title>
           <Card.Text>
-            WATCHLIST STUFF
+            WATCHLIST STUFF NEW TEXT
           </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
