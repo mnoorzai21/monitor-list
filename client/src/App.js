@@ -1,7 +1,7 @@
 import { ApolloProvider } from "@apollo/client";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbars from "./components/Navbar";
 import RequireAuth from "./components/RequireAuth";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -10,6 +10,8 @@ import ProtectedPageExample from "./pages/ProtectedPageExample";
 import SignUp from "./pages/SignUp";
 import { client } from "./util/apolloClient";
 import { AuthProvider } from "./util/auth";
+import SearchResult from "./pages/SearchResult";
+import Watchlist from "./pages/Watchlist"
 
 function App() {
   // useEffect(() => {
@@ -28,12 +30,14 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <AuthProvider>
-          <Navbar />
+          <Navbars />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/infocard" element={<InfoCard />} />
+            <Route path="/searchresult" element={<SearchResult />} />
+            <Route path="/watchlist" element={<Watchlist />} />
             {/* Use <RequiredAuth> for pages that should only be accessible to a
             user that has logged in.*/}
             <Route
