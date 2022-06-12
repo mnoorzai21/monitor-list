@@ -1,34 +1,28 @@
-import { useQuery } from "@apollo/client";
 import { useAuth } from "../util/auth";
-import { ME } from "../util/queries";
-
-const renderDate = (date) =>
-  `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { searchTitleAPI } from "../util/IMDBapi";
 
 export default function ProtectedPageExample() {
   const { user } = useAuth();
-  const { data, loading } = useQuery(ME, {
-    // skip cache for demonstration
-    fetchPolicy: "network-only",
-  });
   return (
     <div>
-      <h1>Welcome {user.username}!</h1>
-      <p>
-        Last Login:{" "}
-        {loading
-          ? "Loading..."
-          : data && renderDate(new Date(data.me.lastLogin))}
-      </p>
-      <hr />
-      <p>Your id is {user._id}</p>
-      <p>Your email is {user.email}</p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo cumque
-        explicabo ipsum, facilis repellendus omnis amet in accusantium quisquam
-        nam qui consectetur sunt distinctio nemo molestiae ratione. Iure,
-        aliquam debitis.
-      </p>
+      <Card style={{ width: "18rem" }}>
+        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+        <Card.Body>
+          <Card.Title>Title</Card.Title>
+          <Card.Text>
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </Card.Text>
+        </Card.Body>
+        <ListGroup className="list-group-flush">
+          <ListGroupItem>Temporary {user.username} Watchlist</ListGroupItem>
+        </ListGroup>
+        <Card.Body>
+          <Card.Link href="#">Card Link</Card.Link>
+          <Card.Link href="#">Another Link</Card.Link>
+        </Card.Body>
+      </Card>
     </div>
   );
 }

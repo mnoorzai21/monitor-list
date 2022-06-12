@@ -8,8 +8,8 @@ export default function WatchListCard() {
     useEffect(() => {
         const getInfo = async () => {
             try {
-                const data = await watchTitle();
-                console.log(data);
+                // const data = await watchTitle();
+                // console.log(data);
             } catch (error) {
                 console.log(error);
             }
@@ -19,7 +19,7 @@ export default function WatchListCard() {
     return (
         <div class = "card">
             <img src="${img}" alt="${product}" ></img>
-            <p class="categoryText">${category}</p>
+            {/* <p class="categoryText">${category}</p> */}
 
         </div>
     );
