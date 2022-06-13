@@ -11,7 +11,7 @@ import SignUp from "./pages/SignUp";
 import { client } from "./util/apolloClient";
 import { AuthProvider } from "./util/auth";
 import SearchResult from "./pages/SearchResult";
-import Watchlist from "./pages/Watchlist"
+import Watchlist from "./pages/Watchlist";
 
 function App() {
   // useEffect(() => {
@@ -19,9 +19,9 @@ function App() {
   //   .then((res) => {
   //     if (!res.ok) {
   //       throw new Error(res.statusText)
-  //     } 
+  //     }
   //     return res.json()
-    
+
   //   }).then((data) => {
   //     console.log(data)
   //   }).catch(console.log)

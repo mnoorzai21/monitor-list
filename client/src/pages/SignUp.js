@@ -40,48 +40,50 @@ export default function SignUp() {
     return <Navigate to="/" replace />;
   }
   return (
-    <div>
-      <h2>Sign Up</h2>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            disabled={loading}
-            type="username"
-            placeholder="Enter username"
-            name="username"
-            value={formState.username.value}
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            disabled={loading}
-            id="email"
-            type="email"
-            name="email"
-            placeholder="Enter email"
-            value={formState.email.value}
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            disabled={loading}
-            id="new-password"
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={formState.password.value}
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Button disabled={loading} variant="primary" type="submit">
-          {loading ? "Loading..." : "Submit"}
-        </Button>
-      </Form>
-    </div>
+    <section className="container container-fluid d-flex flex-row flex-wrap justify-content-center">
+      <div className="text-center col-md-2">
+        <h2>Sign Up</h2>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="text-start mb-3" controlId="formBasicEmail">
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              disabled={loading}
+              type="username"
+              placeholder="Enter username"
+              name="username"
+              value={formState.username.value}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group className="text-start mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              disabled={loading}
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              value={formState.email.value}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group className="text-start mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              disabled={loading}
+              id="new-password"
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={formState.password.value}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+          <Button disabled={loading} variant="primary" type="submit">
+            {loading ? "Loading..." : "Submit"}
+          </Button>
+        </Form>
+      </div>
+    </section>
   );
 }

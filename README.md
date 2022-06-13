@@ -4,7 +4,7 @@
 
 Monitor List is a full-stack web application created by using React, GraphQL, Bootstrap, JavaScript, Nodejs, Expressjs, and IMDb server-side API.
 
-With this app the user can sign-up, login, search for favorite movies, and TV shows. User can save their favorite movies and TV shows to their watchlist by simply clicking on the save button. User can also see their saved items in the watchlist and can remove and update items from the watchlist.
+With this app the user can sign-up, login, search for favorite movies, and TV shows. User can save their favorite movies and TV shows to their watchlist by simply clicking on the save button. User can also see their saved items in the watchlist and can remove and marke items as watched from the watchlist.
 
 ![badge](https://img.shields.io/badge/license-MITLicense-brightgreen)
 
@@ -18,7 +18,7 @@ With this app the user can sign-up, login, search for favorite movies, and TV sh
 
 ## Installation
 
-Clone the monitor-list repository to your local computer. Run `npm install`, `npm run install`, `npm run seed` and `npm run develop` in the command line (Windows) or terminal on (Mac) to install the dependencies and run the application.
+Clone the monitor-list repository to your local computer. Run `npm install`, and `npm run develop` in the command line (Windows) or terminal on (Mac) to install the dependencies and run the application.
 
 ![Application Screenshot](./client/src/images/screenshot.png)
 
