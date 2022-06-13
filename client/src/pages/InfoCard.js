@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAuth } from "../util/auth";
-import { Title, watchTitle } from "../util/IMDBapi";
+import { watchTitle } from "../util/IMDBapi";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 
 export default function InfoCard() {
@@ -8,8 +8,8 @@ export default function InfoCard() {
   useEffect(() => {
     const getTitle = async () => {
       try {
-        const data = await watchTitle();
-        console.log(data);
+        const titleData = await watchTitle();
+        console.log(titleData);
       } catch (error) {
         console.log(error);
       }
