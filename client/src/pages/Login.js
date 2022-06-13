@@ -3,7 +3,6 @@ import { useLocation, Navigate } from "react-router-dom";
 import { useAuth } from "../util/auth";
 import { Form, Button } from "react-bootstrap";
 
-
 // TODO: customize styles or import styles with favorite css approach
 const initialFormState = {
   email: "",
@@ -39,37 +38,39 @@ export default function Login() {
   }
 
   return (
-    <div>
-      <h2>Login</h2>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            disabled={loading}
-            id="email"
-            type="email"
-            name="email"
-            placeholder="Enter email"
-            value={formState.email.value}
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            disabled={loading}
-            id="new-password"
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formState.password.value}
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Button disabled={loading} variant="primary" type="submit">
-          {loading ? "Loading..." : "Submit"}
-        </Button>
-      </Form>
-    </div>
+    <section className="container container-fluid d-flex flex-row flex-wrap justify-content-center">
+      <div className="text-center col-md-2">
+        <h2>Login</h2>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="text-start mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              disabled={loading}
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              value={formState.email.value}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group className="text-start mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              disabled={loading}
+              id="new-password"
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formState.password.value}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+          <Button disabled={loading} variant="primary" type="submit">
+            {loading ? "Loading..." : "Submit"}
+          </Button>
+        </Form>
+      </div>
+    </section>
   );
 }
