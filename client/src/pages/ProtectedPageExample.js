@@ -1,27 +1,33 @@
-import { useAuth } from "../util/auth";
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
-import { searchTitleAPI } from "../util/IMDBapi";
+import React, { useEffect, useState} from "react"
+import MovieList from "../components/MovieList";
 
-export default function ProtectedPageExample() {
-  const { user } = useAuth();
+const ProtectedPageExample = () => {
+  const [movies, setMovies] = useState([]);
+  const [searchValue, setSearchValue] = useState('')
+
+  const getMovieRequest = async () =>{
+    const url ="https://imdb-api.com/en/API/SearchTitle/k_ws4zcg2h/matrix"
+    const response = await fetch(url);
+    const responseJson = await response.json();
+
+    console.log(responseJson);
+    setMovies(responseJson.results);
+  };
+
+    useEffect(() => {
+      getMovieRequest();
+    }, []);
+
   return (
+    <>
     <div>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-        <Card.Body>
-          <Card.Title>Title</Card.Title>
-          <Card.Text>
-            WATCHLIST STUFF NEW TEXT
-          </Card.Text>
-        </Card.Body>
-        <ListGroup className="list-group-flush">
-          <ListGroupItem>Temporary {user.username} Watchlist</ListGroupItem>
-        </ListGroup>
-        <Card.Body>
-          <Card.Link href="#">Card Link</Card.Link>
-          <Card.Link href="#">Another Link</Card.Link>
-        </Card.Body>
-      </Card>
+      asdf
     </div>
+    <div>
+        <MovieList movies={movies} />
+    </div>
+    </>
   );
-}
+};
+
+export default ProtectedPageExample
