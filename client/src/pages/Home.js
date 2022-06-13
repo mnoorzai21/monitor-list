@@ -27,11 +27,12 @@ export default function Home() {
   }, []);
   return (
     <Container>
+      <h2>Top Movies:</h2>
       <CardGroup>
         <Card style={{ width: "12rem" }}>
           <Card.Body>
             <Button variant="primary" href="/SearchResult">
-              <Card.Img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX128_CR0,3,128,176_AL_.jpg" />
+              <Card.Img src="https://m.media-amazon.com/images/I/51zXApiWzgL._AC_.jpg" />
             </Button>
           </Card.Body>
         </Card>
@@ -49,6 +50,9 @@ export default function Home() {
             </Button>
           </Card.Body>
         </Card>
+      </CardGroup>
+      <h2>Top TV-Shows:</h2>
+      <CardGroup>
         <Card style={{ width: "12rem" }}>
           <Card.Body>
             <Button variant="primary" href="/SearchResult">
