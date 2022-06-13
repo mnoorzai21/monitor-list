@@ -1,140 +1,56 @@
-// import { useEffect, useState } from "react";
-// import { searchTitle } from "../util/IMDBapi"
-// import { Form, Container, Button, Card, CardGroup,} from "react-bootstrap";
-// import { useAuth } from "../util/auth";
-// import { useMutation, } from "@apollo/client";
-// import { ADD_WATCH_ITEM } from "../util/mutations";
+import React, { useEffect, useState } from "react";
+import MovieList from "../components/MovieList";
+import SearchBar from "../components/SearchBar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../App.css";
+import { Container } from "react-bootstrap";
+import AddWatchlist from "../components/AddWatchlist";
 
+const SearchResult = () => {
+  const [movies, setMovies] = useState([]);
+  const [watchlist, setWatchlist] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
+  const getMovieRequest = async () => {
+    const url = `https://imdb-api.com/en/API/SearchTitle/k_2zgimyw8/${searchValue}`;
+    const response = await fetch(url);
+    const responseJson = await response.json();
 
-// export default function SearchResult() {
+    if (responseJson.results) {
+      setMovies(responseJson.results);
+    }
+  };
 
-//     const { isLoggedIn, logout } = useAuth();
- 
-//     const [searchedTitles, setSearchedTitles] = useState([]);
-//     const [searchInput, setSearchInput] = useState("");
-//     const [savedTitles, setSavedTitles] = useState(null);
-   
-//     useEffect(() => {
-//       return () => {
-//         savedTitles(savedTitles);
-//       };
-//     }, []);
-   
-//     const [saveTitle, { error }] = useMutation(ADD_WATCH_ITEM);
-   
-//     const handleFormSubmit = async (event) => {
-//       event.preventDefault();
-   
-//       if (!searchInput) {
-//         return false;
-//       }
-//       try {
-//         const response = await searchTitle(searchInput);
-   
-//         if (!response.ok) {
-//           throw new Error("something went wrong!");
-//         }
-   
-//         const { items } = await response.json();
-   
-//         const TitleData = items.map((titles) => ({
-//           IMDbId: titles.id,
-//           title: titles.results.title,
-//           image: titles.results.image || "",
-//         }));
-   
-//         setSearchedTitles(TitleData);
-//         setSearchInput("");
-//       } catch (err) {
-//         console.error(err);
-//       }
-//     };
-   
-//     const handleSaveTitle = async (titleId) => {
-//       const titleToSave = searchedTitles.find(
-//         (title) => title.titleId === titleId
-//       );
-   
-//       const token = useAuth.loggedIn() ? useAuth.getToken() : null;
-   
-//       if (!token) {
-//         return false;
-//       }
-   
-//       try {
-//         const response = await saveTitle({
-//           variables: {
-//             input: titleToSave,
-//           },
-//         });
-   
-//         if (!response) {
-//           throw new Error("something went wrong!");
-//         }
-   
-//         setSavedTitles([...savedTitles, titleToSave.titleId]);
-//       } catch (err) {
-//         console.error(err);
-//       }
-//     };
-   
-//     return (
-//       <Container>
-//         <Form className="d-flex" onSubmit={handleFormSubmit}>
-//           <Form.Control
-//             name="searchInput"
-//             value={searchInput}
-//             onChange={(e) => setSearchInput(e.target.value)}
-//             type="text"
-//             placeholder="Search Title"
-//             className="me-2"
-//             aria-label="Search" />
-//           <Button variant="primary" className="navbar-link" type="submit">
-//             Search
-//           </Button>
-//         </Form>
-//       </Container>,
-//       <Container>
-//           <h2>
-//             {searchedTitles.length
-//               ? `Viewing ${searchedTitles.length} results:`
-//               : "Search for a title to begin"}
-//           </h2>
-//           <CardGroup>
-//             {searchedtitles.map((title) => {
-//               return (
-//                 <Card key={title.titleId} border="dark">
-//                   {title.image ? (
-//                     <Card.Img
-//                       src={title.image}
-//                       alt={`The cover for ${title.title}`}
-//                       variant="top" />
-//                   ) : null}
-//                   <Card.Body>
-//                     <Card.Title>{title.title}</Card.Title>
-//                     <p className="small">Authors: {title.authors}</p>
-//                     <Card.Text>{title.description}</Card.Text>
-//                     {Auth.loggedIn() && (
-//                       <Button
-//                         disabled={savedtitleIds?.some(
-//                           (savedTitleId) => savedtitleId === title.titleId
-//                         )}
-//                         className="btn-block btn-info"
-//                         onClick={() => handleSavetitle(title.titleId)}
-//                       >
-//                         {savedTitleIds?.some(
-//                           (savedTitleId) => savedTitleId === title.titleId
-//                         )
-//                           ? "This title has already been saved!"
-//                           : "Save this title!"}
-//                       </Button>
-//                     )}
-//                   </Card.Body>
-//                 </Card>
-//               );
-//             })}
-//           </CardGroup>
-//         </Container>
-//     );
-//   };
+  useEffect(() => {
+    getMovieRequest(searchValue);
+  }, [searchValue]);
+
+  const addToWatchlist = (movie) => {
+    const NewWatchlist = [...watchlist, movie];
+    setWatchlist(NewWatchlist);
+  };
+
+  return (
+    <Container>
+      <div>
+        <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
+      </div>
+      <div className="row" class="img-thumbnail" >
+        <MovieList
+          movies={movies}
+          handleWatchlistClick={addToWatchlist}
+          AddWatchlistComponent={AddWatchlist}
+        />
+      </div>
+      <div className="row" class="img-thumbnail">
+        <MovieList
+          movies={movies}
+          handleWatchlistClick={addToWatchlist}
+          AddWatchlistComponent={AddWatchlist}
+        />
+      </div>
+    </Container>
+  );
+};
+
+export default SearchResult;

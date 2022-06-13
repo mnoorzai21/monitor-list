@@ -1,32 +1,45 @@
 import React, { useEffect, useState} from "react"
 import MovieList from "../components/MovieList";
+import SearchBar from "../components/SearchBar";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../App.css';
+import {} from "react-bootstrap";
+import AddWatchlist from "../components/AddWatchlist"
 
 const ProtectedPageExample = () => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('')
 
   const getMovieRequest = async () =>{
-    const url ="https://imdb-api.com/en/API/SearchTitle/k_ws4zcg2h/matrix"
+    const url =`https://imdb-api.com/en/API/SearchTitle/k_2zgimyw8/${searchValue}`
     const response = await fetch(url);
     const responseJson = await response.json();
 
-    console.log(responseJson);
-    setMovies(responseJson.results);
+    if (responseJson.results) {
+      setMovies(responseJson.results);
+    }
   };
 
     useEffect(() => {
-      getMovieRequest();
-    }, []);
+      getMovieRequest(searchValue);
+    }, [searchValue]);
 
   return (
-    <>
+    <div className='container-fluid'>
     <div>
-      asdf
+      <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/>
     </div>
-    <div>
-        <MovieList movies={movies} />
+    <div className='row'>
+      <MovieList
+					movies={movies}
+			/>
     </div>
-    </>
+    <div className='row'>
+				<MovieList
+					movies={movies} AddWatchlistComponent={AddWatchlist}
+				/>
+			</div>
+    </div>
   );
 };
 

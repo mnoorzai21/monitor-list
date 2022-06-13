@@ -17,7 +17,7 @@ export default function Navbars() {
         className="navbar row p-3 "
       >
         <Container fluid>
-          <Form className="d-flex">
+          {/* <Form className="d-flex">
             <Form.Control
               name="searchTitle"
               value={searchTitle}
@@ -30,7 +30,7 @@ export default function Navbars() {
             <Button variant="primary" className="navbar-link" type="submit">
               Search
             </Button>
-          </Form>
+          </Form> */}
           <h1 className="text-light p-3">MONITOR LIST</h1>
           <Navbar.Toggle
             aria-controls="responsive-navbar-nav"
@@ -55,7 +55,7 @@ export default function Navbars() {
                 <>
                   <Nav.Link>
                     <NavLink
-                      to="/protected"
+                      to="/SearchResult"
                       className="navbar-link"
                       style={{
                         color: "blue",

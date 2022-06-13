@@ -1,28 +1,28 @@
 import LocalStorageCacheApi from "localstorage-cache-api";
 
 const top250MoviesCache = new LocalStorageCacheApi({
-  url: "https://imdb-api.com/en/API/Top250Movies/k_ws4zcg2h",
+  url: "https://imdb-api.com/en/API/Top250Movies/k_2zgimyw8",
   key: "top250movies",
   // 1 day
   expiration: 24 * 60 * 60 * 1000,
 });
 
 const top250TVsCache = new LocalStorageCacheApi({
-  url: "https://imdb-api.com/en/API/Top250TVs/k_ws4zcg2h",
+  url: "https://imdb-api.com/en/API/Top250TVs/k_2zgimyw8",
   key: "top250tvs",
   // 1 day
   expiration: 24 * 60 * 60 * 1000,
 });
 
 const searchTitleCache = new LocalStorageCacheApi({
-  url: "https://imdb-api.com/en/API/SearchTitle/k_ws4zcg2h",
+  url: "https://imdb-api.com/en/API/SearchTitle/k_2zgimyw8",
   key: "searchtitle",
   // 1 day
   expiration: 24 * 60 * 60 * 1000,
 });
 
 const titleCache = new LocalStorageCacheApi({
-  url: `https://imdb-api.com/en/API/Title/k_ws4zcg2h/${''}`,
+  url: `https://imdb-api.com/en/API/Title/k_2zgimyw8/${''}`,
   key: "title",
   // 1 day
   expiration: 24 * 60 * 60 * 1000,
