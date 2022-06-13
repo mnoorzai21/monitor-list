@@ -10,6 +10,7 @@ const resolvers = {
   Date: dateScalar,
   Query: {
     me: async (parent, args, ctx) => {
+      console.log(ctx.user);
       // if ctx.user is undefined, then no token or an invalid token was
       // provided by the client.
       if (!ctx.user) {
