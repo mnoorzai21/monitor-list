@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAuth } from "../util/auth";
 import { watchTitle } from "../util/IMDBapi";
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Card, ListGroup, ListGroupItem, CardGroup} from "react-bootstrap";
 
 export default function InfoCard() {
   const { isLoggedIn, user } = useAuth();
