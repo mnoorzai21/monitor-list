@@ -1,21 +1,10 @@
 import { useEffect } from "react";
 import { useAuth } from "../util/auth";
-import { watchTitle } from "../util/IMDBapi";
-import { Card, ListGroup, ListGroupItem, CardGroup} from "react-bootstrap";
+import { Card, ListGroup, ListGroupItem, CardGroup } from "react-bootstrap";
 
 export default function InfoCard() {
   const { isLoggedIn, user } = useAuth();
-  useEffect(() => {
-    const getTitle = async () => {
-      try {
-        const titleData = await watchTitle();
-        console.log(titleData);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getTitle();
-  }, []);
+
   return (
     <CardGroup>
       <Card style={{ width: "18rem" }}>

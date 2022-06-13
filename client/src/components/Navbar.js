@@ -55,7 +55,7 @@ export default function Navbars() {
                 <>
                   <Nav.Link>
                     <NavLink
-                      to="/SearchResult"
+                      to="/watchlist"
                       className="navbar-link"
                       style={{
                         color: "blue",
