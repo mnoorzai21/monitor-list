@@ -71,9 +71,7 @@ export default function Home() {
           </Card.Body>
         </Card>
       </CardGroup>
-      <Button href="/SearchResult">
-        Click to Search
-      </Button>
-    </Container>  
+      <Button href="/SearchResult">Click to Search</Button>
+    </Container>
   );
 }
