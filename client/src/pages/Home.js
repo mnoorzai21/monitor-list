@@ -31,7 +31,7 @@ export default function Home() {
         <Card style={{ width: "12rem" }}>
           <Card.Body>
             <Button variant="primary" href="/SearchResult">
-              <Card.Img />
+              <Card.Img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX128_CR0,3,128,176_AL_.jpg" />
             </Button>
           </Card.Body>
         </Card>
